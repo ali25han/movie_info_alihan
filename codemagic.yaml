@@ -8,7 +8,8 @@ workflows:
     scripts:
       - flutter clean
       - flutter pub get
-      - flutter build apk --release
+      - cd android && ./gradlew assembleRelease
+      - cd ..
       - mkdir -p artifacts
       - find . -name "*.apk" -type f -exec cp {} artifacts/ \;
       - ls -R artifacts
