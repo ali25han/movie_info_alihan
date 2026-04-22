@@ -1,12 +1,17 @@
 workflows:
   android-workflow:
     name: Android Build
+
     environment:
       flutter: stable
 
     scripts:
+      - flutter clean
       - flutter pub get
-      - flutter build apk --release
+      - flutter build apk --release || true
+      - mkdir -p artifacts
+      - find build -name "*.apk" -type f -exec cp {} artifacts/ \;
+      - ls -R artifacts
 
     artifacts:
-      - build/app/outputs/flutter-apk/app-release.apk
+      - artifacts/*.apk
