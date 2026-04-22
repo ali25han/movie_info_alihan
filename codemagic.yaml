@@ -8,6 +8,7 @@ workflows:
     scripts:
       - flutter clean
       - flutter pub get
+      - chmod +x android/gradlew
       - cd android && ./gradlew assembleRelease
       - cd ..
       - mkdir -p artifacts
