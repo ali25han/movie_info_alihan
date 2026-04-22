@@ -8,9 +8,9 @@ workflows:
     scripts:
       - flutter clean
       - flutter pub get
-      - flutter build apk --release || true
+      - flutter build apk --release
       - mkdir -p artifacts
-      - find build -name "*.apk" -type f -exec cp {} artifacts/ \;
+      - find . -name "*.apk" -type f -exec cp {} artifacts/ \;
       - ls -R artifacts
 
     artifacts:
